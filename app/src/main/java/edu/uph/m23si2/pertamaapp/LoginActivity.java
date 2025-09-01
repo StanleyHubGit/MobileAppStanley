@@ -13,6 +13,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import edu.uph.m23si2.pertamaapp.model.KRS;
+import edu.uph.m23si2.pertamaapp.model.KRSDetail;
+import edu.uph.m23si2.pertamaapp.model.KelasMatakuliah;
 import edu.uph.m23si2.pertamaapp.model.Mahasiswa;
 import edu.uph.m23si2.pertamaapp.model.Matakuliah;
 import edu.uph.m23si2.pertamaapp.model.Prodi;
@@ -55,7 +58,8 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void initData(){ // menambahkan data prodi dan matakuliah
+    public void initData(){
+        // menambahkan data
         Realm realm = Realm.getDefaultInstance();
         realm.executeTransaction(r -> {
             Number maxId = r.where(Mahasiswa.class).max("studentID");
@@ -72,6 +76,28 @@ public class LoginActivity extends AppCompatActivity {
             matPBO.setNama("Pemrograman Berorientasi Objek");
             matPBO.setSks(3);
             matPBO.setProdi(prodiSI);
+
+            KelasMatakuliah kelasMobile = r.createObject(KelasMatakuliah.class,0);
+            kelasMobile.setRuangKelas("AD101");
+            kelasMobile.setDosen("Sir Ade");
+
+            KelasMatakuliah kelasPBO = r.createObject(KelasMatakuliah.class,1);
+            kelasPBO.setRuangKelas("AD102");
+            kelasPBO.setDosen("Sir Des");
+
+            KRS krs1 = r.createObject(KRS.class,0);
+            krs1.setSemester(6);
+            krs1.setTahunAjaran("2024/2025");
+
+            KRSDetail detail1 = r.createObject(KRSDetail.class,0);
+            detail1.setKrs(krs1);
+            detail1.setKelasMatakuliah(kelasMobile);
+            detail1.setStatus("Diambil");
+
+            KRSDetail detail2 = r.createObject(KRSDetail.class,1);
+            detail2.setKrs(krs1);
+            detail2.setKelasMatakuliah(kelasPBO);
+            detail2.setStatus("Diambil");
 
         });
         Toast.makeText(this, "Data tersimpan", Toast.LENGTH_SHORT).show();

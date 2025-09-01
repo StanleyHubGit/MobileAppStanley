@@ -5,18 +5,11 @@ import io.realm.annotations.PrimaryKey;
 
 public class KRS extends RealmObject {
     @PrimaryKey
-    private int krsID;
-    private String Semester, TahunAjaran;
+    private int krsID, Semester;
+    private String TahunAjaran;
     private Mahasiswa mahasiswa;
 
     public KRS(){}
-
-    public KRS(int krsID, String semester, String tahunAjaran, Mahasiswa mahasiswa) {
-        this.krsID = krsID;
-        Semester = semester;
-        TahunAjaran = tahunAjaran;
-        this.mahasiswa = mahasiswa;
-    }
 
     public int getKrsID() {
         return krsID;
@@ -26,11 +19,11 @@ public class KRS extends RealmObject {
         this.krsID = krsID;
     }
 
-    public String getSemester() {
+    public int getSemester() {
         return Semester;
     }
 
-    public void setSemester(String semester) {
+    public void setSemester(int semester) {
         Semester = semester;
     }
 

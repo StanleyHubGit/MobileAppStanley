@@ -6,18 +6,10 @@ import io.realm.annotations.PrimaryKey;
 public class KelasMatakuliah extends RealmObject {
     @PrimaryKey
     private int kelasID;
-    private String NamaKelas, Semester, TahunAjaran;
+    private String RuangKelas, Dosen;
     private Matakuliah matakuliah;
 
     public KelasMatakuliah(){}
-
-    public KelasMatakuliah(int kelasID, String namaKelas, String semester, String tahunAjaran, Matakuliah matakuliah) {
-        this.kelasID = kelasID;
-        NamaKelas = namaKelas;
-        Semester = semester;
-        TahunAjaran = tahunAjaran;
-        this.matakuliah = matakuliah;
-    }
 
     public int getKelasID() {
         return kelasID;
@@ -27,28 +19,20 @@ public class KelasMatakuliah extends RealmObject {
         this.kelasID = kelasID;
     }
 
-    public String getNamaKelas() {
-        return NamaKelas;
+    public String getRuangKelas() {
+        return RuangKelas;
     }
 
-    public void setNamaKelas(String namaKelas) {
-        NamaKelas = namaKelas;
+    public void setRuangKelas(String ruangKelas) {
+        RuangKelas = ruangKelas;
     }
 
-    public String getSemester() {
-        return Semester;
+    public String getDosen() {
+        return Dosen;
     }
 
-    public void setSemester(String semester) {
-        Semester = semester;
-    }
-
-    public String getTahunAjaran() {
-        return TahunAjaran;
-    }
-
-    public void setTahunAjaran(String tahunAjaran) {
-        TahunAjaran = tahunAjaran;
+    public void setDosen(String dosen) {
+        Dosen = dosen;
     }
 
     public Matakuliah getMatakuliah() {
