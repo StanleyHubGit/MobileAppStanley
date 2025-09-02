@@ -5,7 +5,8 @@ import io.realm.annotations.PrimaryKey;
 
 public class KRS extends RealmObject {
     @PrimaryKey
-    private int krsID, Semester;
+    private int krsID;
+    private int Semester;
     private String TahunAjaran;
     private Mahasiswa mahasiswa;
 
